@@ -1,16 +1,20 @@
+
 public class Scrabble {
-    private static String word = "";
-    public Scrabble (String word) {
+    private static String word;
+
+    public Scrabble(String word) {
         this.word = word;
     }
+
     public static void main(String[] args) {
-        Scrabble.score();
+        Scrabble word = new Scrabble("a");
+        System.out.println(Scrabble.score());
     }
+
     public static int score() {
-        if (Scrabble.isEmptyWord()) return 0;
-        return 4;
+        WordPlayed wordPlayed = new WordPlayed(Scrabble.word);
+        if (wordPlayed.isNull() || wordPlayed.isEmptyWord()) return 0;
+        return wordPlayed.calculateWordScore(Scrabble.word);
     }
-    public static boolean isEmptyWord () {
-        return (Scrabble.word == "");
-    }
+
 }
