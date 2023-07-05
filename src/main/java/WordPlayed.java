@@ -7,11 +7,11 @@ public class WordPlayed {
         this.finalScore = 0;
     }
 
-    public char [] wordToLettersArray (String word){
-        return word.toCharArray();
+    public char [] wordToLowerCseLettersArray (String word){
+        return (word.toLowerCase()).toCharArray();
     }
     public int calculateWordScore (String word) {
-        for (char letter : wordToLettersArray(word)) {
+        for (char letter : wordToLowerCseLettersArray(word)) {
             this.finalScore += calculateLetterScore(letter);
         }
         return this.finalScore;
