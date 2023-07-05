@@ -7,6 +7,16 @@ public class WordPlayed {
         this.finalScore = 0;
     }
 
+    public char [] wordToLettersArray (String word){
+        return word.toCharArray();
+    }
+    public int calculateWordScore (String word) {
+        for (char letter : wordToLettersArray(word)) {
+            this.finalScore += calculateLetterScore(letter);
+        }
+        return this.finalScore;
+    }
+
     public int calculateLetterScore (char letter) {
         int letterScore = 0;
         LetterValues letterValues = new LetterValues();
