@@ -17,24 +17,17 @@ public class WordPlayed {
         return this.finalScore;
     }
     public int calculateLetterScore (char letter) {
-        int letterScore = 0;
-        int letterValue = getLetterScore(letter);
-        letterScore = isLetterValid(letter) ? letterScore += getLetterScore (letter) : letterScore;
-        return letterScore;
+        return isLetterValid(letter) ? getLetterScore (letter) : 0;
     }
 
     public int getLetterScore (char letter) {
-        LetterValues letterValues = new LetterValues();
-        int letterScore = letterValues.getLetterPoints().get(String.valueOf(letter));
-        return letterScore;
+        return LetterValues.getLetterPoints().get(String.valueOf(letter));
     }
     public boolean isLetterValid(char letter) {
-        LetterValues letterValues = new LetterValues();
-        boolean validLetter = letterValues.getLetterPoints().containsKey(String.valueOf(letter));
-        return validLetter;
+        return LetterValues.getLetterPoints().containsKey(String.valueOf(letter));
     }
     public boolean isEmptyWord () {
-        return (this.wordPlayed == "");
+        return (this.wordPlayed.equals(""));
     }
 
     public boolean isNull () {

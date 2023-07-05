@@ -12,8 +12,7 @@ public class Scrabble {
 
     public static int score() {
         WordPlayed wordPlayed = new WordPlayed(Scrabble.word);
-        int score = (wordPlayed.isNull() || wordPlayed.isEmptyWord()) ? 0 : wordPlayed.calculateWordScore(Scrabble.word);;
-        return score;
+        return (wordPlayed.isNull() || wordPlayed.isEmptyWord()) ? 0 : wordPlayed.calculateWordScore(Scrabble.word);
     }
 
 }
