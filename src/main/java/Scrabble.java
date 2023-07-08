@@ -2,8 +2,8 @@ import java.lang.reflect.Constructor;
 
 public class Scrabble {
     private static String word;
-    private static Character[] firstL;
-    private static Character[] secondL;
+    private static Character[] doubleLetters;
+    private static Character[] tripleLetters;
     private static boolean doubleWord;
     private static boolean tripleWord;
 
@@ -14,10 +14,10 @@ public class Scrabble {
         this.justWord = true;
     }
 
-    public Scrabble(String word, Character[] firstL, Character[] secondL, boolean doubleWord, boolean tripleWord) {
+    public Scrabble(String word, Character[] doubleLetters, Character[] tripleLetters, boolean doubleWord, boolean tripleWord) {
         this.word = word;
-        this.firstL = firstL;
-        this.secondL = secondL;
+        this.doubleLetters = doubleLetters;
+        this.tripleLetters = tripleLetters;
         this.doubleWord = doubleWord;
         this.tripleWord = tripleWord;
         this.justWord = false;
@@ -34,7 +34,7 @@ public class Scrabble {
 
     public int score() {
         WordPlayed wordPlayed1 = new WordPlayed(this.word);
-        WordPlayed wordPlayed2 = new WordPlayed(this.word, this.firstL, this.secondL, this.doubleWord, this.tripleWord);
+        WordPlayed wordPlayed2 = new WordPlayed(this.word, this.doubleLetters, this.tripleLetters, this.doubleWord, this.tripleWord);
         if (this.justWord) {
             return wordPlayed1.calculateWordScore(this.word);
         }

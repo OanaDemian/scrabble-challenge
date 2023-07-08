@@ -1,7 +1,7 @@
 public class WordPlayed {
     private String wordPlayed;
-    private Character[] firstL;
-    private Character[] secondL;
+    private Character[] doubleLetters;
+    private Character[] tripleLetters;
     private boolean doubleWord;
     private boolean tripleWord;
     private int finalScore;
@@ -11,10 +11,10 @@ public class WordPlayed {
         this.finalScore = 0;
     }
 
-    public WordPlayed(String wordPlayed, Character[] firstL, Character[] secondL, boolean doubleWord, boolean tripleWord) {
+    public WordPlayed(String wordPlayed, Character[] doubleLetters, Character[] tripleLetters, boolean doubleWord, boolean tripleWord) {
         this.wordPlayed = wordPlayed;
-        this.firstL = firstL;
-        this.secondL = secondL;
+        this.doubleLetters = doubleLetters;
+        this.tripleLetters = tripleLetters;
         this.doubleWord = doubleWord;
         this.tripleWord = tripleWord;
         this.finalScore = 0;
