@@ -31,8 +31,9 @@ public class WordPlayed {
         for (char letter : wordToLowerCaseLettersArray(word)) {
             this.finalScore += calculateLetterScore(letter);
         }
-        return this.isDoubleWord(word) ? this.finalScore *= 2 : this.finalScore;
-
+        if (this.isDoubleWord(word)) { this.finalScore *= 2;};
+        if (this.isTripleWord(word)) { this.finalScore *= 3;};
+        return this.finalScore;
     }
     public int calculateLetterScore (char letter) {
         return isLetterValid(letter) ? getLetterScore (letter) : 0;
@@ -45,7 +46,7 @@ public class WordPlayed {
     public boolean isDoubleWord(String word) {
         return this.doubleWord;
     }
-    public boolean isTripleWordWord(String word) {
+    public boolean isTripleWord(String word) {
         return this.tripleWord;
     }
     public boolean isLetterValid(char letter) {
