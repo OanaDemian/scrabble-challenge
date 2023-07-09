@@ -17,7 +17,7 @@ public class Turn {
         this.finalScore = 0;
     }
 
-    public Turn (String wordPlayed, Character[] doubleLetters, Character[] tripleLetters, boolean doubleWord, boolean tripleWord) {
+    public Turn(String wordPlayed, Character[] doubleLetters, Character[] tripleLetters, boolean doubleWord, boolean tripleWord) {
         this.wordPlayed = wordPlayed;
         this.doubleLetters = doubleLetters;
         this.tripleLetters = tripleLetters;
@@ -26,25 +26,29 @@ public class Turn {
         this.finalScore = 0;
     }
 
-    public char [] wordToLowerCaseLettersArray (String word){
+    public char[] wordToLowerCaseLettersArray(String word) {
         return (word.toLowerCase()).toCharArray();
     }
-    public int calculateWordScore (String word) {
+
+    public int calculateWordScore(String word) {
         if (isNull() || isEmptyWord()) return 0;
         calculateSimpleWordScore(word);
         premiumLettersScore();
-        premiumWordScore ();
+        premiumWordScore();
         return this.finalScore;
     }
-    public void premiumWordScore () {
+
+    public void premiumWordScore() {
         if (this.isDoubleWord()) this.finalScore *= 2;
         if (this.isTripleWord()) this.finalScore *= 3;
     }
+
     public void calculateSimpleWordScore(String word) {
         for (char letter : wordToLowerCaseLettersArray(word)) {
             this.finalScore += calculateLetterScore(letter);
         }
     }
+
     public void premiumLettersScore() {
         for (char doubleLetter : getDoubleLetters()) {
             this.finalScore += calculateLetterScore(doubleLetter);
@@ -53,19 +57,22 @@ public class Turn {
             this.finalScore += 2 * calculateLetterScore(tripleLetter);
         }
     }
-    public int calculateLetterScore (char letter) {
+
+    public int calculateLetterScore(char letter) {
         if (isLetterValid(letter)) return getLetterScore(letter);
         return 0;
     }
-    public int getLetterScore (char letter) {
+
+    public int getLetterScore(char letter) {
         return LetterValues.getLetterPoints().get(String.valueOf(letter));
     }
-    public char[] getDoubleLetters () {
+
+    public char[] getDoubleLetters() {
         String dLettersStr = Arrays.toString(this.doubleLetters);
         return dLettersStr.toLowerCase().toCharArray();
     }
 
-    public char[] getTripleLetters () {
+    public char[] getTripleLetters() {
         String tLettersStr = Arrays.toString(this.tripleLetters);
         return tLettersStr.toLowerCase().toCharArray();
     }
@@ -73,16 +80,20 @@ public class Turn {
     public boolean isDoubleWord() {
         return this.doubleWord;
     }
+
     public boolean isTripleWord() {
         return this.tripleWord;
     }
+
     public boolean isLetterValid(char letter) {
         return LetterValues.getLetterPoints().containsKey(String.valueOf(letter));
     }
-    public boolean isEmptyWord () {
+
+    public boolean isEmptyWord() {
         return (this.wordPlayed.equals(""));
     }
-    public boolean isNull () {
+
+    public boolean isNull() {
         return (this.wordPlayed == null);
     }
 }

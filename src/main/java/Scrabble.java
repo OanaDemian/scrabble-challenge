@@ -1,10 +1,10 @@
 public class Scrabble {
     private final String word;
+    protected boolean justWord;
     private Character[] doubleLetters;
     private Character[] tripleLetters;
     private boolean doubleWord;
     private boolean tripleWord;
-    protected boolean justWord;
 
     public Scrabble(String wordToScore) {
         this.word = wordToScore;
@@ -22,6 +22,7 @@ public class Scrabble {
 
     public static void main(String[] args) {
     }
+
     public int score() {
         Turn player1 = new Turn(this.word);
         Turn player2 = new Turn(this.word, this.doubleLetters, this.tripleLetters, this.doubleWord, this.tripleWord);
