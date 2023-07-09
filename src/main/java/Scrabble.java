@@ -1,14 +1,10 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
-
 public class Scrabble {
-    private static String word;
-    private static Character[] doubleLetters;
-    private static Character[] tripleLetters;
-    private static boolean doubleWord;
-    private static boolean tripleWord;
-
-    private boolean justWord;
+    private final String word;
+    private Character[] doubleLetters;
+    private Character[] tripleLetters;
+    private boolean doubleWord;
+    private boolean tripleWord;
+    protected boolean justWord;
 
     public Scrabble(String wordToScore) {
         this.word = wordToScore;
@@ -25,27 +21,14 @@ public class Scrabble {
     }
 
     public static void main(String[] args) {
-//        Scrabble scrabble = new Scrabble("quirky", new Character[]{}, new Character[]{}, true, false);
-//        WordPlayed wordPlayed1 = new WordPlayed("quirky", new Character[]{}, new Character[]{}, true, false);
-//        System.out.println(wordPlayed.isDoubleWord("quirky"));
-//        System.out.println(wordPlayed.calculateWordScore("quirky"));
-//        System.out.println(scrabble.score());
-        Scrabble scrabble = new Scrabble("a", new Character[]{'A'}, new Character[]{}, false, false);
-        WordPlayed wordPlayed2 = new WordPlayed("a", new Character[]{'A'}, new Character[]{}, false, false);
-
-//        System.out.println(Arrays.toString(Scrabble.doubleLetters).contains(String.valueOf("B")));
-
-        System.out.println(wordPlayed2.getLetterScore('a'));
-        System.out.println(wordPlayed2.getDoubleLetters());
     }
-
     public int score() {
-        WordPlayed wordPlayed1 = new WordPlayed(this.word);
-        WordPlayed wordPlayed2 = new WordPlayed(this.word, this.doubleLetters, this.tripleLetters, this.doubleWord, this.tripleWord);
+        Turn player1 = new Turn(this.word);
+        Turn player2 = new Turn(this.word, this.doubleLetters, this.tripleLetters, this.doubleWord, this.tripleWord);
         if (this.justWord) {
-            return wordPlayed1.calculateWordScore(this.word);
+            return player1.calculateWordScore(this.word);
         }
-        return wordPlayed2.calculateWordScore(this.word);
+        return player2.calculateWordScore(this.word);
     }
 
 
