@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
 public class Scrabble {
     private static String word;
@@ -29,7 +30,13 @@ public class Scrabble {
 //        System.out.println(wordPlayed.isDoubleWord("quirky"));
 //        System.out.println(wordPlayed.calculateWordScore("quirky"));
 //        System.out.println(scrabble.score());
+        Scrabble scrabble = new Scrabble("a", new Character[]{'A'}, new Character[]{}, false, false);
+        WordPlayed wordPlayed2 = new WordPlayed("a", new Character[]{'A'}, new Character[]{}, false, false);
 
+//        System.out.println(Arrays.toString(Scrabble.doubleLetters).contains(String.valueOf("B")));
+
+        System.out.println(wordPlayed2.getLetterScore('a'));
+        System.out.println(wordPlayed2.getDoubleLetters());
     }
 
     public int score() {
